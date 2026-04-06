@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechZone - Tech & Gadgets Guide</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --orange: #ff6b35;
+      --red: #e63946;
+      --dark-orange: #c1440e;
+      --light: #fff7f3;
+    }
+
+    body { font-family: 'Poppins', sans-serif; background: var(--light); }
+
+    .navbar-brand span { color: var(--orange); }
+
+    .hero {
+      background: linear-gradient(135deg, #ff6b35 0%, #e63946 60%, #c1440e 100%);
+      color: white;
+      padding: 90px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50px; right: -50px;
+      width: 300px; height: 300px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -30px;
+      width: 250px; height: 250px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+    }
+    .hero h1 { font-size: 2.8rem; font-weight: 700; }
+    .btn-hero {
+      background: white;
+      color: var(--orange);
+      font-weight: 600;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 50px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-hero:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); color: var(--orange); }
+
+    .gadget-card {
+      border-left: 5px solid var(--orange) !important;
+      border-radius: 10px;
+      border-top: 1px solid #eee;
+      border-right: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .gadget-card:hover { transform: translateY(-6px); box-shadow: 0 10px 25px rgba(230,57,70,0.15); }
+    .gadget-card .card-title { color: var(--orange); font-weight: 600; }
+
+    .tip-card { border-left: 5px solid var(--red) !important; border-radius: 10px; }
+    .tip-card h6 { color: var(--red); font-weight: 600; }
+
+    .badge-orange { background-color: var(--orange); }
+
+    .checklist-item { border-radius: 8px; transition: background 0.2s; }
+    .checklist-item.done { background: #f3e8e4 !important; }
+    .checklist-item.done label { text-decoration: line-through; color: #999; }
+
+    .progress-bar { background: linear-gradient(90deg, var(--orange), var(--red)); }
+
+    .table thead { background: linear-gradient(135deg, var(--orange), var(--red)); color: white; }
+    .table-hover tbody tr:hover { background-color: #fff0eb; }
+
+    .accordion-button:not(.collapsed) {
+      background-color: #fff0eb;
+      color: var(--orange);
+      font-weight: 600;
+    }
+    .accordion-button:focus { box-shadow: 0 0 0 0.2rem rgba(255,107,53,0.25); }
+
+    .section-title { font-weight: 700; color: #222; }
+
+    footer { background: #1a1a1a; color: #ccc; }
+    footer a { color: var(--orange); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">🔥 <span>TechZone</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto gap-1">
+          <li class="nav-item"><a class="nav-link" href="#gadgets">Gadgets</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tips">Tech Tips</a></li>
+          <li class="nav-item"><a class="nav-link" href="#checklist">Checklist</a></li>
+          <li class="nav-item"><a class="nav-link" href="#compare">Compare</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div style="font-size:3.5rem; margin-bottom:15px;">⚡</div>
+    <h1>Tech & Gadgets Guide</h1>
+    <p class="lead mt-2 mb-4">Your go-to guide for the latest gadgets, buying tips, and tech tricks</p>
+    <a href="#gadgets" class="btn btn-hero btn-lg">Explore Gadgets</a>
+  </div>
+
+  <!-- Must-Have Gadgets -->
+  <section id="gadgets" class="py-5 bg-white">
+    <div class="container">
+      <h2 class="section-title text-center mb-2">Must-Have Gadgets in 2024</h2>
+      <p class="text-center text-muted mb-5">Top picks across every category</p>
+      <div class="row g-4">
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 gadget-card p-3">
+            <div class="card-body">
+              <span class="badge badge-orange mb-2">Wearables</span>
+              <div class="fs-2 mb-2">⌚</div>
+              <h5 class="card-title">Smartwatch</h5>
+              <p class="card-text">Track fitness, get notifications, and monitor health — all from your wrist. Great for students who stay active.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 gadget-card p-3">
+            <div class="card-body">
+              <span class="badge badge-orange mb-2">Audio</span>
+              <div class="fs-2 mb-2">🎧</div>
+              <h5 class="card-title">Noise Cancelling Earbuds</h5>
+              <p class="card-text">Block out distractions and focus better. TWS earbuds with ANC are a game changer for productivity and studying.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 gadget-card p-3">
+            <div class="card-body">
+              <span class="badge badge-orange mb-2">Productivity</span>
+              <div class="fs-2 mb-2">💻</div>
+              <h5 class="card-title">Portable Laptop Stand</h5>
+              <p class="card-text">Improve posture and keep your laptop cool with an adjustable stand. A must for long coding or study sessions.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 gadget-card p-3">
+            <div class="card-body">
+              <span class="badge badge-orange mb-2">Power</span>
+              <div class="fs-2 mb-2">🔋</div>
+              <h5 class="card-title">Power Bank (20000mAh)</h5>
+              <p class="card-text">Never run out of battery during college or travel. High-capacity power banks keep all your devices running all day.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 gadget-card p-3">
+            <div class="card-body">
+              <span class="badge badge-orange mb-2">Storage</span>
+              <div class="fs-2 mb-2">💾</div>
+              <h5 class="card-title">Portable SSD</h5>
+              <p class="card-text">Transfer files at lightning speed and carry your data anywhere. Far faster and more reliable than a regular pen drive.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 gadget-card p-3">
+            <div class="card-body">
+              <span class="badge badge-orange mb-2">Connectivity</span>
+              <div class="fs-2 mb-2">🌐</div>
+              <h5 class="card-title">USB-C Hub / Dongle</h5>
+              <p class="card-text">Expand your laptop's ports — HDMI, USB-A, SD card slot, and more, all from one compact hub.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Smart Tech Tips -->
+  <section id="tips" class="py-5" style="background:#fff7f3">
+    <div class="container">
+      <h2 class="section-title text-center mb-2">Smart Tech Tips</h2>
+      <p class="text-center text-muted mb-5">Make the most out of your devices</p>
+      <div class="row g-3">
+
+        <div class="col-md-6">
+          <div class="card tip-card p-3 h-100">
+            <h6>🔒 Keep Your Data Safe</h6>
+            <p class="mb-0">Use strong passwords, enable 2-factor authentication, and never reuse the same password across accounts.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card tip-card p-3 h-100">
+            <h6>⚡ Speed Up Your PC</h6>
+            <p class="mb-0">Disable startup programs, clear temp files regularly, and keep your drivers and OS updated.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card tip-card p-3 h-100">
+            <h6>🔋 Extend Battery Life</h6>
+            <p class="mb-0">Lower screen brightness, turn off Bluetooth/Wi-Fi when not in use, and avoid charging to 100% every time.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card tip-card p-3 h-100">
+            <h6>☁️ Use Cloud Backup</h6>
+            <p class="mb-0">Back up important files to Google Drive or OneDrive. Never lose your college assignments or projects again.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card tip-card p-3 h-100">
+            <h6>🛡️ Keep Software Updated</h6>
+            <p class="mb-0">Install OS and app updates regularly. Most security vulnerabilities are patched through updates — don't skip them.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card tip-card p-3 h-100">
+            <h6>📶 Secure Your Wi-Fi</h6>
+            <p class="mb-0">Use WPA3 encryption on your router, change the default password, and avoid doing sensitive work on public Wi-Fi.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Buying Checklist -->
+  <section id="checklist" class="py-5 bg-white">
+    <div class="container">
+      <h2 class="section-title text-center mb-2">Gadget Buying Checklist</h2>
+      <p class="text-center text-muted mb-5">Things to verify before purchasing any gadget</p>
+      <div class="row justify-content-center">
+        <div class="col-lg-7">
+          <div class="d-flex justify-content-between mb-1">
+            <span class="fw-semibold">Checked</span>
+            <span id="progress-text">0%</span>
+          </div>
+          <div class="progress mb-4" style="height:8px">
+            <div class="progress-bar" id="progress-bar" role="progressbar" style="width:0%"></div>
+          </div>
+          <div id="checklist-container"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section id="compare" class="py-5" style="background:#fff7f3">
+    <div class="container">
+      <h2 class="section-title text-center mb-2">Earbuds Comparison</h2>
+      <p class="text-center text-muted mb-5">Popular wireless earbuds at a glance</p>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle text-center">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>ANC</th>
+              <th>Battery Life</th>
+              <th>Price (Approx)</th>
+              <th>Best For</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fw-semibold">Sony WF-1000XM5</td>
+              <td><span class="badge bg-success">Yes</span></td>
+              <td>8 hrs + case</td>
+              <td>₹19,990</td>
+              <td>Premium users</td>
+            </tr>
+            <tr>
+              <td class="fw-semibold">Apple AirPods Pro 2</td>
+              <td><span class="badge bg-success">Yes</span></td>
+              <td>6 hrs + case</td>
+              <td>₹24,900</td>
+              <td>iPhone users</td>
+            </tr>
+            <tr>
+              <td class="fw-semibold">Nothing Ear (2)</td>
+              <td><span class="badge bg-success">Yes</span></td>
+              <td>6.3 hrs + case</td>
+              <td>₹9,999</td>
+              <td>Value for money</td>
+            </tr>
+            <tr>
+              <td class="fw-semibold">Boat Airdopes 141</td>
+              <td><span class="badge bg-secondary">No</span></td>
+              <td>6 hrs + case</td>
+              <td>₹999</td>
+              <td>Budget pick</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Accordion -->
+  <section id="faq" class="py-5 bg-white">
+    <div class="container">
+      <h2 class="section-title text-center mb-2">Frequently Asked Questions</h2>
+      <p class="text-center text-muted mb-5">Common tech questions answered</p>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="accordion" id="faqAccordion">
+
+            <div class="accordion-item mb-2 border rounded">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                  What is the difference between RAM and ROM?
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  RAM (Random Access Memory) is temporary storage used while your device is running — it gets cleared when you switch off. ROM (Read Only Memory) stores permanent data like the OS that stays even after shutdown.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item mb-2 border rounded">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                  Should I buy a gaming laptop or a normal laptop for college?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  For most BTech students, a mid-range laptop (Core i5 / Ryzen 5, 16GB RAM, SSD) is more than enough. Gaming laptops are heavier and have poor battery life. Only go for gaming if your course needs heavy graphics work.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item mb-2 border rounded">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                  Is 5G worth it right now in India?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  5G coverage in India is still expanding but it's a good idea to future-proof your phone with a 5G-ready model. Cities like Jaipur already have growing 5G coverage, so you'll benefit from it soon enough.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item mb-2 border rounded">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                  How do I free up storage space on my laptop?
+                </button>
+              </h2>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Delete temp files, uninstall apps you don't use, empty the recycle bin, and move large files (videos, old projects) to an external drive or cloud. On Windows, use "Storage Sense" for automatic cleanup.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-4 text-center">
+    <p class="mb-1">© 2024 TechZone — Tech & Gadgets Guide</p>
+    <p class="mb-0 small">Frontend Development Lab Project &nbsp;|&nbsp; Built with HTML, CSS & <a href="#">Bootstrap 5</a></p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const items = [
+      "Check reviews on YouTube & tech blogs",
+      "Compare prices on Amazon vs Flipkart",
+      "Verify warranty period & nearby service centre",
+      "Check OS compatibility (Windows / Mac / Android)",
+      "Look for return & replacement policy",
+      "Check battery life & charging speed",
+      "Verify port compatibility (USB-C / Type-A)",
+      "Read full specs — RAM, storage, processor",
+      "Check what's included in the box",
+      "Look for student discounts or bank offers"
+    ];
+
+    const container = document.getElementById('checklist-container');
+
+    items.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'checklist-item d-flex align-items-center gap-3 bg-white border rounded p-3 mb-2';
+      div.innerHTML = `
+        <input type="checkbox" class="form-check-input" id="item-${i}" style="width:20px;height:20px;accent-color:#ff6b35">
+        <label class="form-check-label mb-0 flex-grow-1" for="item-${i}">${item}</label>
+      `;
+      div.querySelector('input').addEventListener('change', () => {
+        div.classList.toggle('done');
+        updateProgress();
+      });
+      container.appendChild(div);
+    });
+
+    function updateProgress() {
+      const checked = document.querySelectorAll('#checklist-container input:checked').length;
+      const pct = Math.round((checked / items.length) * 100);
+      document.getElementById('progress-bar').style.width = pct + '%';
+      document.getElementById('progress-text').textContent = pct + '%';
+    }
+  </script>
+
+</body>
+</html>
