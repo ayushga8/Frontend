@@ -472,9 +472,8 @@
         <h2 class="section-title">Earbuds Comparison</h2>
         <p class="text-muted mt-2" style="font-size:0.92rem;">Popular wireless earbuds at a glance</p>
       </div>
-      <p class="text-muted text-center d-md-none mb-3" style="font-size:0.8rem;">← Swipe to see full table →</p>
-      <div class="table-responsive rounded-3 overflow-hidden border" style="border-color:rgba(255,78,26,0.15)!important; -webkit-overflow-scrolling:touch;">
-        <table class="table table-hover mb-0" style="min-width:560px;">
+      <div id="table-wrap" style="overflow-x:auto; -webkit-overflow-scrolling:touch; border:1px solid rgba(255,78,26,0.15); border-radius:12px; scrollbar-width:thin; scrollbar-color:#FF4E1A #F0E4DA;">
+        <table class="table table-hover mb-0" style="min-width:580px;">
           <thead>
             <tr>
               <th>Model</th>
@@ -516,6 +515,59 @@
           </tbody>
         </table>
       </div>
+
+      <!-- Custom scrollbar track shown on all devices -->
+      <div style="margin-top:10px; padding:0 2px;">
+        <div id="scroll-track" style="background:#F0E4DA; border-radius:50px; height:6px; position:relative; cursor:pointer;">
+          <div id="scroll-thumb" style="background:linear-gradient(90deg,#FF4E1A,#FFB830); height:6px; border-radius:50px; width:40%; position:absolute; left:0; top:0; transition:left 0.1s;"></div>
+        </div>
+        <div class="d-flex justify-content-between mt-1" style="font-size:0.72rem; color:#C4A08A;">
+          <span>← scroll</span><span>scroll →</span>
+        </div>
+      </div>
+
+      <script>
+        (function(){
+          const wrap  = document.getElementById('table-wrap');
+          const thumb = document.getElementById('scroll-thumb');
+          const track = document.getElementById('scroll-track');
+
+          function updateThumb(){
+            const max = wrap.scrollWidth - wrap.clientWidth;
+            const pct = max > 0 ? wrap.scrollLeft / max : 0;
+            const trackW = track.clientWidth;
+            const thumbW = Math.max(40, trackW * (wrap.clientWidth / wrap.scrollWidth));
+            thumb.style.width = thumbW + 'px';
+            thumb.style.left  = (pct * (trackW - thumbW)) + 'px';
+          }
+
+          wrap.addEventListener('scroll', updateThumb);
+          window.addEventListener('resize', updateThumb);
+          updateThumb();
+
+          // Click/drag on track to scroll table
+          track.addEventListener('click', function(e){
+            const rect = track.getBoundingClientRect();
+            const pct  = (e.clientX - rect.left) / rect.width;
+            wrap.scrollLeft = pct * (wrap.scrollWidth - wrap.clientWidth);
+          });
+
+          let dragging = false, startX, startLeft;
+          thumb.addEventListener('pointerdown', function(e){
+            dragging = true; startX = e.clientX; startLeft = wrap.scrollLeft;
+            e.preventDefault();
+          });
+          document.addEventListener('pointermove', function(e){
+            if(!dragging) return;
+            const dx   = e.clientX - startX;
+            const max  = wrap.scrollWidth - wrap.clientWidth;
+            const ratio = max / (track.clientWidth - thumb.clientWidth);
+            wrap.scrollLeft = Math.max(0, Math.min(max, startLeft + dx * ratio));
+          });
+          document.addEventListener('pointerup', () => dragging = false);
+        })();
+      </script>
+
     </div>
   </section>
 
